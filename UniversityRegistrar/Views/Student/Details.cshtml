@@ -1,0 +1,17 @@
+@using UniversityRegistrar.Models;
+
+<h1>@Model.Name</h1>
+
+<h3>Enrolled on @Model.Date</h3>
+
+@if(Model.Courses.Count == 0)
+{
+    <p>This student isn't enrolled in any classes yet.</p>
+}
+
+@foreach(var join in Model.Courses)
+{
+    <li>@join.Course.Name</li>
+}
+
+@Html.ActionLink("Go back to the list of students", "Index")

@@ -9,18 +9,18 @@ using UniversityRegistrar.Models;
 
 namespace UniversityRegistrar.Controllers
 {
-    public class StudentController : Controller
+    public class CourseController : Controller
     {
         private readonly UniversityRegistrarContext _db;
 
-        public StudentController(UniversityRegistrarContext db)
+        public CourseController(UniversityRegistrarContext db)
         {
             _db = db;
         }
 
         public ActionResult Index()
         {
-            return View(_db.Students.ToList());
+            return View(_db.Courses.ToList());
         }
 
         public ActionResult Create()
@@ -29,17 +29,17 @@ namespace UniversityRegistrar.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Student theStudent)
+        public ActionResult Create(Course theCourse)
         {
-            _db.Students.Add(theStudent);
+            _db.Courses.Add(theCourse);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public ActionResult Details(int id)
         {
-            Student theStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
-            return View(theStudent);
+            Course theCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
+            return View(theCourse);
         }
     }
 }

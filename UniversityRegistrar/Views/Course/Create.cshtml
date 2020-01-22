@@ -1,0 +1,14 @@
+@model UniversityRegistrar.Models.Course;
+@using System;
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+
+    @Html.LabelFor(model => model.CourseNumber)
+    @Html.TextBoxFor(model => model.CourseNumber)
+
+    <input type="submit" value="Add Course"/>
+
+}
