@@ -3,18 +3,21 @@
 }
 @using UniversityRegistrar.Models;
 
-<h1>@Model.Name</h1>
+<div class="info-container">
+    <h1>@Model.Name</h1>
 
-<h3>Enrolled on @Model.Date</h3>
+    <h3>Enrolled on @Model.Date</h3>
 
-@if(Model.Courses.Count == 0)
-{
-    <p>This student isn't enrolled in any classes yet.</p>
-}
+    @if(Model.Courses.Count == 0)
+    {
+        <p>This student isn't enrolled in any classes yet.</p>
+    }
 
-@foreach(var join in Model.Courses)
-{
-    <li>@join.Course.Name</li>
-}
+    @foreach(var join in Model.Courses)
+    {
+        <li>@join.Course.Name</li>
+    }
+</div>
 
 <p>@Html.ActionLink("Back to the list of students", "Index")</p>
+<p>@Html.ActionLink("Go Home", "Index", "Home")</p>

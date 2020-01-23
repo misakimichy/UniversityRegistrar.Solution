@@ -29,9 +29,9 @@ namespace UniversityRegistrar.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Course theCourse)
+        public ActionResult Create(Course course)
         {
-            _db.Courses.Add(theCourse);
+            _db.Courses.Add(course);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

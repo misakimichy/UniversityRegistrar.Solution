@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using UniversityRegistrar.Models;
 
 
@@ -25,13 +23,14 @@ namespace UniversityRegistrar.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "Name");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Student theStudent)
+        public ActionResult Create(Student student)
         {
-            _db.Students.Add(theStudent);
+            _db.Students.Add(student);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -40,6 +39,20 @@ namespace UniversityRegistrar.Controllers
         {
             Student theStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
             return View(theStudent);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+            return View(thisStudent);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Student student)
+        {
+            _db.Entry(student).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

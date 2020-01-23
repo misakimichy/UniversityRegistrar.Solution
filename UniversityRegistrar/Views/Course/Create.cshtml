@@ -3,17 +3,20 @@
 }
 @model UniversityRegistrar.Models.Course;
 
+<h1>Add course</h1>
+<div class="info-container">
 @using (Html.BeginForm())
 {
     @Html.LabelFor(model => model.Name)
-    @Html.TextBoxFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name) <br><br>
 
     @Html.LabelFor(model => model.CourseNumber)
-    @Html.TextBoxFor(model => model.CourseNumber)
+    @Html.TextBoxFor(model => model.CourseNumber)<br><br>
 
-    <input type="submit" value="Add Course"/>
+    <input type="submit" value="Add Course" class="btn btn-info" />
 
 }
+</div>
 
 <p>@Html.ActionLink("Back to the list of courses", "Index", "Course")</p>
 <p>@Html.ActionLink("Go Home", "Index", "Home")</p>

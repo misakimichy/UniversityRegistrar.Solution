@@ -16,6 +16,23 @@ h1, h2, h3, h4, h5, p {
     text-align: center;
 }
 
+ul > li {
+    list-style: none;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto;
+}
+
+.info-container {
+    max-width: 600px;
+    margin: 30px auto 0 auto;
+    padding: 30px;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+}
+
 footer {
     display:flex;
     justify-content: center;

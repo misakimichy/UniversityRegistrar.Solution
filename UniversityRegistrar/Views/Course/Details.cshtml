@@ -1,3 +1,23 @@
 @{
     Layout = "_Layout";
 }
+@model UniversityRegistrar.Models.Course;
+
+<div class="info-container">
+    <h1>@Model.Name @Html.DisplayFor(model => model.CourseNumber)</h1>
+    <hr />
+    @if(Model.Students.Count == 0)
+    {
+        <p>Any students haven't enrolled this course yet.</p>
+    }
+    else
+    {
+        @foreach(var join in Model.Students)
+        {
+            <li>@join.Course.Name</li>
+        }
+    }
+</div>
+
+<p>@Html.ActionLink("Back to the list of students", "Index")</p>
+<p>@Html.ActionLink("Go Home", "Index", "Home")</p>
