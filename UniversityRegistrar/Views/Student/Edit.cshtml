@@ -2,22 +2,21 @@
     Layout = "_Layout";
 }
 @model UniversityRegistrar.Models.Student;
-@using System;
 
-<h1>Add student</h1>
+<h1>Edit</h1>
 <div class="info-container">
 @using (Html.BeginForm())
 {
     @Html.LabelFor(model => model.Name)
     @Html.TextBoxFor(model => model.Name)<br><br>
 
-    @Html.Hidden("Date", DateTime.Now)
+    @Html.HiddenFor(model => model.StudentId)
     @Html.Label("Select a course")
     @Html.DropDownList("CourseId")<br><br>
 
-    <input type="submit" value="Add Student" class="btn btn-info" />
+    <input type="submit" value="Edit" class="btn btn-info" />
 }
 </div>
 
-<p>@Html.ActionLink("Back to student list", "Index", "Course")</p>
+<p>@Html.ActionLink("Back to student list", "Index")</p>
 <p>@Html.ActionLink("Go Home", "Index", "Home")</p>
